@@ -14,9 +14,11 @@ gem "jbuilder"
 gem "redis", "~> 4.0"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
-gem 'shrine', '~> 3.3'
+gem 'kaminari'
 gem 'image_processing', '~> 1.12', '>= 1.12.1'
 gem "devise", "~> 4.9"
+gem 'faker'
+gem 'sidekiq'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

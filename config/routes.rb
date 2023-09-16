@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   root "home#index"
   resources :books
+  resources :authors
+
+  get '/get_books_data', to: 'books#get_data'
 end
