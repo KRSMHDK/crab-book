@@ -1,3 +1,7 @@
 class HomeController < ApplicationController
-  def index; end
+  def index
+    if user_signed_in?
+      @books = current_user.books
+    end
+  end
 end
