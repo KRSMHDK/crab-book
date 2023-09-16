@@ -1,0 +1,33 @@
+<main id="main" data-aos="fade" data-aos-delay="1500">
+  <section id="about" class="about hero">
+    <div class="container">
+      <div class="row gy-4 justify-content-center">
+        <div class="col-lg-4">
+          <% if @author.image.attached? %>
+            <%= image_tag url_for(@author.image), class: 'img-thumbnail' %>
+          <% else %>
+            <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", class: 'img-thumbnail' %>
+          <% end %>
+        </div>
+        <div class="col-lg-5 content">
+          <h2><%= @author.name %></h2>
+          <h3><%= @author.dob %></h3>
+          <p class="fst-italic py-3">
+            <%= @author.description %>
+          </p>
+          <% if @author_books.present? %>
+            <p>Some of the Author books:</p>
+          <% end %>
+          <ul>
+            <% @author_books.each do |book| %>
+              <li>
+                <%= link_to book.title, book_path(book) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</html>

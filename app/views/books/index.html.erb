@@ -1,0 +1,22 @@
+<section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center">
+        <% if user_signed_in? %>
+          <p>Hello
+            <h2>
+              <span><%= current_user.username %></span>
+            </h2>
+            Ready to embark on a literary adventure? Explore our library, and if you have a book to share or want to explore, you're in the right place!"</p>
+          <%= link_to "Add New Book", new_book_path, class:"btn-get-started" %>
+        <% else %>
+          <h2>Books</h2>
+          <p>Please Login To see all the books</p>
+          <%= link_to "Join For Free", new_user_registration_path, class:"btn-get-started" %>
+          <%= link_to "Login", new_user_session_path, class:"btn-get-started" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<%= render partial: 'list' %>

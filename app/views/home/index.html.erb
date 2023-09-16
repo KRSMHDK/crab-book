@@ -14,72 +14,25 @@
               </h2>
               Ready to embark on a literary adventure? Explore our library, and if you have a book to share or want to explore, you're in the right place!"</p>
             <%= link_to "Add New Book", new_book_path, class:"btn-get-started" %>
-            <%= button_to "Sign out", destroy_user_session_path, method: :delete, class:"btn-danger" %>
           <% else %>
+            <%= image_tag("craby.png", alt: "Crab Image", width: "250", height: "250", class: "image-with-border") %>
             <h2>Welcome to <span>Crab Book</span>: The Ultimate Crap Book Library</h2>
             <p>The biggest library in the Universe!</p>
-            <%= link_to "Join For Free", new_user_registration_path, class:"btn-get-started" %>
-            <%= link_to "Login", new_user_session_path, class:"btn-get-started" %>
+            <%= link_to "Join For Free", new_user_registration_path, class:"btn btn-primary" %>
+            <%= link_to "Login", new_user_session_path, class:"btn btn-primary" %>
           <% end %>
         </div>
       </div>
     </div>
   </section>
   <!-- End Hero Section -->
-  <main id="main" data-aos="fade" data-aos-delay="1500">
-    <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-      <div class="container-fluid">
-        <div class="row gy-4 justify-content-center">
-          <!-- End Gallery Item -->
-          <% @books.each do |book| %>
-            <div class="card text-bg-dark mb-3" style="width: 18rem;">
-              <div class="image-container">
-                <% if book.image.attached? %>
-                  <%= image_tag url_for(book.image), class: 'img-thumbnail' %>
-                <% else %>
-                  <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", class: 'img-thumbnail' %>
-                <% end %>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><%= book.title %> / <%= book.author_name %></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <%= link_to "Details", book_path(book.id), class:"btn btn-primary" %>
-              </div>
-            </div>
-          <% end %>
-          <!-- End Gallery Item -->
-        </div>
-      </div>
-    </section>
-    <!-- End Gallery Section -->
-  </main><!-- End #main -->
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-      </div>
-    </div>
-  </footer>
-  <div id="preloader">
-    <div class="line"></div>
-  </div>
-  <!-- End Footer -->
+<%= render partial: 'books/list' %>
+
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
 </body>
 </html>
 <script>
-  /**
-  * Template Name: PhotoFolio
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  */
   document.addEventListener('DOMContentLoaded', () => {
     "use strict";
 

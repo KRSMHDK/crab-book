@@ -1,0 +1,53 @@
+<section id="hero" class="hero d-flex flex-column justify-content-center align-items-center" data-aos="fade" data-aos-delay="1500">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 text-center">
+        <% if user_signed_in? %>
+          <p>Hello
+            <h2>
+              <span><%= current_user.username %></span>
+            </h2>
+            Ready to embark on a literary adventure? Explore our library, and if you have a book to share or want to explore, you're in the right place!"</p>
+          <%= link_to "Add New Author", new_author_path, class:"btn-get-started" %>
+        <% else %>
+          <h2>Authors</h2>
+          <p>Please login to see all the Authors</p>
+          <%= link_to "Join For Free", new_user_registration_path, class:"btn-get-started" %>
+          <%= link_to "Login", new_user_session_path, class:"btn-get-started" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<main id="main" data-aos="fade" data-aos-delay="1500">
+  <!-- ======= Gallery Section ======= -->
+  <section id="gallery" class="gallery">
+    <div class="container-fluid">
+      <div class="row gy-4 justify-content-center">
+        <!-- End Gallery Item -->
+        <% @authors.each do |author| %>
+          <div class="card text-bg-dark mb-3" style="width: 18rem;">
+            <div class="image-container">
+              <% if author.image.attached? %>
+                <%= image_tag url_for(author.image), class: 'img-thumbnail' %>
+              <% else %>
+                <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", class: 'img-thumbnail' %>
+              <% end %>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= author.name %> /</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <%= link_to "Details", author_path(author.id), class:"btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  <div class="copyright d-flex flex-column  justify-content-center align-items-center">
+    <% if @authors.present? %>
+      <%= paginate @authors, remote:true %>
+    <% end %>
+  </div>
+  <!-- End Gallery Section -->
+</main><!-- End #main -->
