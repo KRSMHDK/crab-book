@@ -8,4 +8,5 @@ class User < ApplicationRecord
                     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :username, presence: true, uniqueness: true
   has_many :books
+  has_many :authors
 end
