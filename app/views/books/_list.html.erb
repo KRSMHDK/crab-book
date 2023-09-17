@@ -1,28 +1,33 @@
   <main id="main" data-aos="fade" data-aos-delay="1500">
-    <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-      <div class="container-fluid">
-        <div class="row gy-4 justify-content-center">
-          <!-- End Gallery Item -->
-          <% @books.each do |book| %>
-            <div class="card text-bg-dark mb-3" style="width: 18rem;">
-              <div class="image-container">
-                <% if book.image.attached? %>
-                  <%= image_tag url_for(book.image), class: 'img-thumbnail' %>
-                <% else %>
-                  <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", class: 'img-thumbnail' %>
-                <% end %>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><%= book.title %> / <%= book.author_name %> / <%= book.publication_date  %></h5>
-                <p class="card-text"><%= book.description %></p>
-                <%= link_to "Details", book_path(book.id), class:"btn btn-primary" %>
-              </div>
+  <!-- ======= Gallery Section ======= -->
+  <section id="gallery" class="gallery">
+    <div class="container-fluid">
+      <div class="row gy-4 justify-content-center">
+        <!-- End Gallery Item -->
+        <% @books.each do |book| %>
+          <div class="card text-bg-dark mb-3" style="width: 18rem;">
+            <div class="image-container">
+              <% if book.image.attached? %>
+                <%= image_tag url_for(book.image), class: 'img-thumbnail' %>
+              <% else %>
+                <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", class: 'img-thumbnail' %>
+              <% end %>
             </div>
-          <% end %>
-          <!-- End Gallery Item -->
-        </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= book.title %> / <%= book.author_name %> / <%= book.publication_date  %></h5>
+              <p class="card-text"><%= book.description %></p>
+              <%= link_to "Details", book_path(book.id), class:"btn btn-primary" %>
+            </div>
+          </div>
+        <% end %>
+        <!-- End Gallery Item -->
       </div>
-    </section>
-    <!-- End Gallery Section -->
-  </main><!-- End #main -->
+    </div>
+  </section>
+  <!-- End Gallery Section -->
+  <div class="copyright d-flex flex-column  justify-content-center align-items-center">
+    <% if @books.present? && controller_name != 'home'%>
+      <%= paginate @books, remote:true %>
+    <% end %>
+  </div>
+</main><!-- End #main -->

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :authors
 
   get '/get_books_data', to: 'books#get_data'
+  get '/table_style', to: 'books#table'
+  get '/my_books', to: 'books#my_books'
 end
