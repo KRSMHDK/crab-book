@@ -15,6 +15,14 @@ class BooksController < ApplicationController
     end
   end
 
+  def my_table
+    if user_signed_in?
+      @books = current_user.books.page(params[:page])
+    else
+      @books = {}
+    end
+  end
+
   def new
     @book = Book.new
     @author = Author.all

@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   get '/get_books_data', to: 'books#get_data'
   get '/table_style', to: 'books#table'
+  get '/my_table_style', to: 'books#my_table'
   get '/my_books', to: 'books#my_books'
 end
